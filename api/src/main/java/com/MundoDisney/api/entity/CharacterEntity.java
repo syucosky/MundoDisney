@@ -3,26 +3,25 @@ package com.MundoDisney.api.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.IdGeneratorType;
-import org.hibernate.id.enhanced.SequenceStyleGenerator;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-public class Character {
+@Table(name = "characters")
+public class CharacterEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private String name;
     private int age;
     private double weight;
     private String history;
-    private byte[] image;
+    private String image;
 
     @ManyToMany(
             cascade = {
@@ -34,5 +33,5 @@ public class Character {
             joinColumns = @JoinColumn(name = "character_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id")
     )
-    private Set<Movie> movies = new HashSet<>();
+    private List<MovieEntity> movies = new ArrayList<>();
  }

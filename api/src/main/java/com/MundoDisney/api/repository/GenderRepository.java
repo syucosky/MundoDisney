@@ -1,9 +1,9 @@
 package com.MundoDisney.api.repository;
 
-import com.MundoDisney.api.entity.Gender;
+import com.MundoDisney.api.entity.GenderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GenderReposity extends JpaRepository<Gender,Integer> {
+public interface GenderRepository extends JpaRepository<GenderEntity,Long> {
 }

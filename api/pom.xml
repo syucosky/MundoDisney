@@ -14,7 +14,7 @@
 	<name>api</name>
 	<description>Desarrollar una aplicación que le permita a niños y niñas hispanohablantes explorar el mundo de Disney.</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
