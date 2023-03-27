@@ -17,7 +17,7 @@ public class MovieEntity {
     @Column
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String titulo;
+    private String title;
 
     @Column(name = "creation_date")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
@@ -33,5 +33,5 @@ public class MovieEntity {
     private GenderEntity gender;
 
     @Column(name = "gender_id", nullable = false)
-    private int genderId;
+    private Long genderId;
 }
