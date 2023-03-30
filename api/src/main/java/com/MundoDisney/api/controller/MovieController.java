@@ -1,5 +1,6 @@
 package com.MundoDisney.api.controller;
 
+import com.MundoDisney.api.dto.CharacterDTO;
 import com.MundoDisney.api.dto.MovieDTO;
 import com.MundoDisney.api.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/movie")
+@RequestMapping("/movies")
 public class MovieController {
 
     @Autowired
@@ -27,5 +28,12 @@ public class MovieController {
         List<MovieDTO> listMovies = movieService.getAllMovies();
 
         return ResponseEntity.ok().body(listMovies);
+    }
+    @PutMapping("/{idMovie}/characters/{idCharacter}")
+    public ResponseEntity<MovieDTO> assignMovieToCharacter(@PathVariable("idCharacter") Long idcharacter,
+                                                           @PathVariable("idMovie") Long idmovie){
+        MovieDTO characterAdded = movieService.assignCharacterToMovie(idcharacter,idmovie);
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(characterAdded);
     }
 }

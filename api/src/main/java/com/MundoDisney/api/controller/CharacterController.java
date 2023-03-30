@@ -28,4 +28,12 @@ public class CharacterController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(characterCreated); // return http status 201 CREATED and Character from bbdd
     }
+    @PatchMapping("/{id}/edit")
+    public ResponseEntity<CharacterDTO> edit(@RequestBody CharacterDTO character,
+                                             @PathVariable("id") Long id){
+        CharacterDTO characterEdited = characterService.editForId(character,id);
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(characterEdited);
+    }
+
 }

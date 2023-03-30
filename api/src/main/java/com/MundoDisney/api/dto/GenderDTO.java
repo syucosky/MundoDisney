@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class GenderDTO {
-    private Long id;
+    private Long genderId;
     private String name;
     private String image;
 

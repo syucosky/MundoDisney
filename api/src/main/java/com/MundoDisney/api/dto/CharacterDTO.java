@@ -5,16 +5,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
 public class CharacterDTO {
-    private Long id;
+    private Long characterId;
     private String name;
-    private int age;
-    private double weight;
+    private Integer age;
+    private Double weight;
     private String history;
     private String image;
-    private List<MovieEntity> movies = new ArrayList<>();
+    private Set<MovieEntity> movies = new HashSet<>();
 }

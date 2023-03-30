@@ -1,11 +1,14 @@
 package com.MundoDisney.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,22 +19,15 @@ public class CharacterEntity {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private Long characterId;
     private String name;
-    private int age;
-    private double weight;
+    private Integer age;
+    private Double weight;
     private String history;
     private String image;
 
-    @ManyToMany(
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
-    @JoinTable(
-            name = "movie_character",
-            joinColumns = @JoinColumn(name = "character_id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id")
-    )
-    private List<MovieEntity> movies = new ArrayList<>();
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "characters", cascade = CascadeType.ALL)
+    private Set<MovieEntity> movies = new HashSet<>();
  }
